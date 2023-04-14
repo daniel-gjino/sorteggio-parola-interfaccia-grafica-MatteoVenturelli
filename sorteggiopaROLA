@@ -1,0 +1,37 @@
+import javax.swing.*;
+import java.awt.event.*;
+
+public class RandomWordGUI extends JFrame {
+  private static final String[] WORDS = {"cane", "gatto", "topo", "elefante", "leone"};
+  private JButton button;
+  private JLabel label;
+
+  public RandomWordGUI() {
+    setTitle("Random Word");
+    setSize(300, 200);
+  
+    button = new JButton("Genera Parola");
+    label = new JLabel("Premi il pulsante per generare una parola casuale");
+
+    button.addActionListener(new ActionListener() {
+      
+      public void actionPerformed(ActionEvent e) {
+        int index = (int) (Math.random() * WORDS.length);
+        label.setText(WORDS[index]);
+      }
+    });
+
+    JPanel panel = new JPanel();
+    panel.add(button);
+    panel.add(label);
+    add(panel);
+    setVisible(true);
+  }
+
+  public static void main(String[] args) {
+    new RandomWordGUI();
+  }
+}
+
+
+
